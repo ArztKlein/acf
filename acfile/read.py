@@ -15,7 +15,7 @@ class ACFLexer(Lexer):
     DIVIDE   = r'/'
     MINUS    = r'-'
     MULT     = r'\*'
-    NUMBER   = r'''[+ -]?[0-9]{1,10}([.][0-9]{1,2})?'''
+    NUMBER   = r'''[+ -]?[0-9]+([.][0-9]+)?'''
     PLUS     = r'\+'
     POWER    = r'\^'
     SECTION  = r'@[a-zA-Z_]+'
@@ -128,10 +128,14 @@ class ACFParser(Parser):
 
 
 def read_string(string):
+    lines = string.split("\n")
+
+    return read_lines(lines)
+
+
+def read_lines(lines: list[str]):
     lexer = ACFLexer()
     parser = ACFParser()
-
-    lines = string.split("\n")
 
     for line in lines:
         try:
@@ -140,3 +144,13 @@ def read_string(string):
             break
 
     return parser.variables
+    
+
+def read_file(path: str):
+    with open(path, 'r') as f:
+        lines = f.readlines()
+        return read_lines(lines)
+
+
+if __name__ == "__main__":
+    print(read_file("testfile.acf"))
