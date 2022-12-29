@@ -1,5 +1,7 @@
 from sly import Lexer, Parser
 
+from acfile.acf import ACF
+
 class ACFLexer(Lexer):
 
     def __init__(self):
@@ -143,14 +145,10 @@ def read_lines(lines: list[str]):
         except EOFError:
             break
 
-    return parser.variables
+    return ACF(parser.variables)
     
 
 def read_file(path: str):
     with open(path, 'r') as f:
         lines = f.readlines()
         return read_lines(lines)
-
-
-if __name__ == "__main__":
-    print(read_file("testfile.acf"))
