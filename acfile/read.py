@@ -129,13 +129,13 @@ class ACFParser(Parser):
         return self.services[name]
 
 
-def read_string(string):
+def read_string(string, dict=False) -> ACF | dict:
     lines = string.split("\n")
 
-    return read_lines(lines)
+    return read_lines(lines, dict=dict)
 
 
-def read_lines(lines: list[str]):
+def read_lines(lines: list[str], dict=False) -> ACF | dict:
     lexer = ACFLexer()
     parser = ACFParser()
 
@@ -145,10 +145,13 @@ def read_lines(lines: list[str]):
         except EOFError:
             break
 
-    return ACF(parser.variables)
+    if dict:
+        return parser.variables
+    else:
+        return ACF(parser.variables)
     
 
-def read_file(path: str):
+def read_file(path: str, dict=False) -> ACF | dict:
     with open(path, 'r') as f:
         lines = f.readlines()
-        return read_lines(lines)
+        return read_lines(lines, dict=dict)
