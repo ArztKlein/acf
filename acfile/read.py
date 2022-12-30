@@ -130,7 +130,10 @@ class ACFParser(Parser):
 
 
 def read_string(string, dict=False) -> ACF | dict:
-    lines = string.split("\n")
+    lines = string.readlines()
+
+    # Remove any empty lines
+    lines = list(filter(None, lines))
 
     return read_lines(lines, dict=dict)
 
@@ -153,9 +156,4 @@ def read_lines(lines: list[str], dict=False) -> ACF | dict:
 
 def read_file(path: str, dict=False) -> ACF | dict:
     with open(path, 'r') as f:
-        lines = f.read().splitlines()
-
-        # Remove any empty lines
-        lines = list(filter(None, lines))
-
-        return read_lines(lines, dict=dict)
+        return read_string(f.read(), dict=dict)
