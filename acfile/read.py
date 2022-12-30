@@ -130,7 +130,7 @@ class ACFParser(Parser):
 
 
 def read_string(string, dict=False) -> ACF | dict:
-    lines = string.readlines()
+    lines = string.splitlines()
 
     # Remove any empty lines
     lines = list(filter(None, lines))
