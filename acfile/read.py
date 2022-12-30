@@ -153,5 +153,9 @@ def read_lines(lines: list[str], dict=False) -> ACF | dict:
 
 def read_file(path: str, dict=False) -> ACF | dict:
     with open(path, 'r') as f:
-        lines = f.readlines()
+        lines = f.read().splitlines()
+
+        # Remove any empty lines
+        lines = list(filter(None, lines))
+
         return read_lines(lines, dict=dict)
