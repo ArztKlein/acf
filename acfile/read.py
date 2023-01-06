@@ -67,19 +67,19 @@ class ACFParser(Parser):
         self.variables = {}
 
 
-    def get_variable(self, identifier):
+    def __get_variable(self, identifier):
         try:
             return self.variables[self.current_section][identifier]
         except KeyError:
             raise Exception(f"Variable {identifier} could not be found. Cross-section variables are not allowed.")
     
 
-    def set_variable(self, name, value):
+    def __set_variable(self, name, value):
         self.variables[self.current_section][name] = value
 
     @_("VARIABLE ASSIGN expr")
     def statement(self, p):
-        self.set_variable(p.VARIABLE, p.expr)
+        self.__set_variable(p.VARIABLE, p.expr)
 
     @_("expr MINUS expr")
     def expr(self, p):
@@ -115,7 +115,7 @@ class ACFParser(Parser):
 
     @_("VARIABLE")
     def expr(self, p):
-        return self.get_variable(p.VARIABLE)
+        return self.__get_variable(p.VARIABLE)
 
     @_("SECTION")
     def statement(self, p):
