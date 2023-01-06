@@ -123,10 +123,6 @@ class ACFParser(Parser):
 
         self.current_section = section_name
         self.variables[section_name] = {}
-    
-
-    def get_service(self, name):
-        return self.services[name]
 
 
 def read_string(string, dict=False) -> ACF | dict:
