@@ -63,7 +63,6 @@ class ACFParser(Parser):
     )
 
     def __init__(self):
-        self.services = {}
         self.variables = {}
 
 
