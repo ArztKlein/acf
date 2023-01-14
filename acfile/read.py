@@ -27,6 +27,7 @@ class ACFLexer(Lexer):
     VARIABLE = r'[a-zA-Z_][a-zA-Z0-9_]*'
 
     # Ignored pattern
+    ignore_comment = r';(.+)'
     ignore_newline = r'\n+'
 
     # Extra action for newlines
