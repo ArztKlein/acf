@@ -1,13 +1,10 @@
 <p align="center">
-<a href="https://github.com/ArztKlein/acf/issues" alt="Issues">
-        <img src="
-https://img.shields.io/github/issues/ArztKlein/acf" /></a>
-<a href="https://pypi.org/project/acfile/" alt="PyPi">
-        <img src="
-https://img.shields.io/pypi/v/acfile" /></a>
-<a href="https://pypi.org/project/acfile/" alt="Downloads per month">
-        <img src="
-https://img.shields.io/pypi/dm/acfile" /></a>
+    <a href="https://github.com/ArztKlein/acf/issues" alt="Issues">
+            <img src="https://img.shields.io/github/issues/ArztKlein/acf" /></a>
+    <a href="https://pypi.org/project/acfile/" alt="PyPi version">
+            <img src="https://img.shields.io/pypi/v/acfile" /></a>
+    <a href="https://pypi.org/project/acfile/" alt="Downloads per month">
+            <img src="https://img.shields.io/pypi/dm/acfile" /></a>
 </p>
 
 # ACF Advanced Configuration Format
